@@ -1,0 +1,28 @@
+{% extends 'games/base.html' %}
+
+{% block content %}
+    <p>
+        <a href="{% url 'games:new_game' %}">Create new game</a>
+    </p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Location</th>
+            <th>When</th>
+            <th>Max Players</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+            <tr>
+                <td><a href="{% url 'games:detail' game.id %}">{{ game.id }}</a></td>
+                <td>{{ game.location }}</td>
+                <td>{{ game.datetime }}</td>
+                <td>{{ game.max_players }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'games/base.html' %}
+
+{% block content %}
+    <p>
+        <a href="{% url 'games:index' %}">See all games</a>
+    </p>
+
+    {{ game }}
+
+    <h1>Players</h1>
+    {% if not playing %}
+        <p>No players signed up yet!</p>
+    {% else %}
+        <h2>Playing</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Registration #</th>
+                <th>Name</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in playing %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>
+                        <form method="POST" action="{% url 'games:delete_player' player_id=player.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ player.id }}">
+                            <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+        <h2>Waitlist</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Registration #</th>
+                <th>Name</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in waitlist %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>
+                        <form method="POST" action="{% url 'games:delete_player' player_id=player.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ player.id }}">
+                            <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    {% endif %}
+
+    <h1>Add a new Player</h1>
+    <form method="POST" action="{% url 'games:new_player' game_id=game.id %}" class="new-player-form">
+        {% csrf_token %}
+        {{ new_player_form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

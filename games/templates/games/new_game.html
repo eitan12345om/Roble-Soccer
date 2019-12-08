@@ -1,0 +1,14 @@
+{% extends 'games/base.html' %}
+
+{% block content %}
+    <p>
+        <a href="{% url 'games:index' %}">See all games</a>
+    </p>
+
+    <h2>New post</h2>
+    <form method="POST" class="new-game-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

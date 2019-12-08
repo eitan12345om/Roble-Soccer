@@ -1,0 +1,56 @@
+[
+  {
+    "model": "games.Player",
+    "pk": 1,
+    "fields": {
+      "game_id": 1,
+      "name": "Bernard Jackson",
+      "opted_for_waitlist": false
+    }
+  },
+  {
+    "model": "games.Player",
+    "pk": 2,
+    "fields": {
+      "game_id": 1,
+      "name": "Alfred Smith",
+      "opted_for_waitlist": false
+    }
+  },
+  {
+    "model": "games.Player",
+    "pk": 3,
+    "fields": {
+      "game_id": 1,
+      "name": "Cory Carter",
+      "opted_for_waitlist": false
+    }
+  },
+  {
+    "model": "games.Player",
+    "pk": 4,
+    "fields": {
+      "game_id": 1,
+      "name": "Desmond Davinci",
+      "opted_for_waitlist": false
+    }
+  },
+  {
+    "model": "games.Player",
+    "pk": 5,
+    "fields": {
+      "game_id": 1,
+      "name": "Eugene Everett",
+      "opted_for_waitlist": false
+    }
+  },
+  {
+    "model": "games.Player",
+    "pk": 6,
+    "fields": {
+      "game_id": 1,
+      "name": "Fred Focker",
+      "opted_for_waitlist": false
+    }
+  }
+]
