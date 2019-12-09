@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True) in ('True', True)
 
-ALLOWED_HOSTS = ['roble-soccer.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'roble-soccer.herokuapp.com']
 
 
 # Application definition
@@ -74,16 +75,8 @@ WSGI_APPLICATION = 'soccer_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# TODO: Make ENV vars
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'soccer_website_test',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config()
 }
 
 
