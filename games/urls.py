@@ -11,4 +11,3 @@ urlpatterns = [
     path('delete_player/<int:player_id>/', views.delete_player, name='delete_player'),
     path('<int:game_id>/', views.detail, name='detail'),
 ]
-
