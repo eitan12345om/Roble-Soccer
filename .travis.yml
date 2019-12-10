@@ -15,6 +15,6 @@ env:
 
 before_script:
   - psql -c "CREATE DATABASE travisdb;" -U postgres
-  - python games/manage.py migrate --no-input
+  - python manage.py migrate --no-input
 
 script: python manage.py test
