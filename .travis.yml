@@ -3,14 +3,18 @@ language: python
 python:
   - 3.8
 
-install:
-  - pip install -r requirements.txt
-
 services:
   - postgresql
 
 env:
-  - DJANGO=3.0 DABATASE_URL=postgres://postgres:postgres@localhost/travisdb
+  - DJANGO=3.0
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE="soccer_website.settings"
+  - export DATABASE_URL=postgres://postgres:postgres@localhost/travisdb
+
+install:
+  - pip install -r requirements.txt
 
 before_script:
   - psql -c "CREATE DATABASE travisdb;" -U postgres
@@ -20,7 +24,5 @@ script: python manage.py test
 
 notifications:
   email:
-    recipients:
-      - eitan.simler@gmail.com
-    on_success: never
-    on_failure: always
+    on_success: change
+    on_failure: change
