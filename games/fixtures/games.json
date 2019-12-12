@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "location": "Roble Field",
-      "datetime": "2018-02-14 00:00:00",
+      "datetime": "2018-02-14 00:00:00Z",
       "max_players": 18
     }
   },
@@ -13,7 +13,7 @@
     "pk": 2,
     "fields": {
       "location": "Wilbur Field",
-      "datetime": "2019-02-14 00:00:00",
+      "datetime": "2019-02-14 00:00:00Z",
       "max_players": 16
     }
   },
@@ -22,7 +22,7 @@
     "pk": 3,
     "fields": {
       "location": "Sand Hill",
-      "datetime": "2019-05-14 00:00:00",
+      "datetime": "2019-05-14 00:00:00Z",
       "max_players": 19
     }
   }

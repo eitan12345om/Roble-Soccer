@@ -24,7 +24,8 @@ def detail(request, game_id):
     game = get_object_or_404(Game, pk=game_id)
 
     all_players = Player.objects.filter(game_id=game_id)
-    playing = all_players.order_by('id').filter(opted_for_waitlist=False)[:game.max_players]
+    playing = all_players.order_by('id').filter(opted_for_waitlist=False)[
+              :game.max_players]
     waitlist = all_players.difference(playing).order_by('id')
 
     new_player_form = PlayerForm()
@@ -76,7 +77,8 @@ def new_game(request):
 
         if form.is_valid():
             game = form.save()
-            logger.info(f"Created new game -- location: {game.location} -- datetime: {game.datetime} -- max_players: {game.max_players}")
+            logger.info(
+                f"Created new game -- location: {game.location} -- datetime: {game.datetime} -- max_players: {game.max_players}")
 
             return redirect(reverse('games:detail', args=(game.id,)))
     else:

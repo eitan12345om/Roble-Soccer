@@ -1,8 +1,12 @@
+import logging
 from datetime import datetime, timedelta
 
 from django.core.management.base import BaseCommand
 
 from games.models import Game
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level='INFO')
 
 
 class Command(BaseCommand):
@@ -16,4 +20,9 @@ class Command(BaseCommand):
         max_age = options.get('max_age', Command.MAX_AGE_IN_WEEKS)
         weeks_ago = datetime.today() - timedelta(weeks=max_age)
 
-        Game.objects.filter(datetime__lt=weeks_ago).delete()
+        num_objects, objects = Game.objects.filter(
+            datetime__lt=weeks_ago).delete()
+
+        logger.info(f"Deleted {num_objects} object(s): {objects}")
+        self.stdout.write(
+            self.style.SUCCESS(f"Deleted {num_objects} object(s): {objects}"))
