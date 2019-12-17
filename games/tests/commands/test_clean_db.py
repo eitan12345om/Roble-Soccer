@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta, timezone
 from io import StringIO
-import pytz
 
 from django.core.management import call_command
 from django.test import TestCase
