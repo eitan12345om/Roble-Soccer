@@ -1,6 +1,6 @@
 import logging
 
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from games.forms import GameForm, PlayerForm
@@ -24,8 +24,7 @@ def detail(request, game_id):
     game = get_object_or_404(Game, pk=game_id)
 
     all_players = Player.objects.filter(game_id=game_id)
-    playing = all_players.order_by('id').filter(opted_for_waitlist=False)[
-              :game.max_players]
+    playing = all_players.order_by('id').filter(opted_for_waitlist=False)[:game.max_players]
     waitlist = all_players.difference(playing).order_by('id')
 
     new_player_form = PlayerForm()
