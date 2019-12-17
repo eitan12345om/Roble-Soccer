@@ -1,1 +1,1 @@
-# Roble-Soccer [![Build Status](https://travis-ci.com/eitan12345om/Roble-Soccer.svg?branch=master)](https://travis-ci.com/eitan12345om/Roble-Soccer)
+# Roble-Soccer [![Build Status](https://travis-ci.com/eitan12345om/Roble-Soccer.svg?branch=master)](https://travis-ci.com/eitan12345om/Roble-Soccer) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d73d613a0e5446c299701fcf59fe53b7)](https://www.codacy.com/manual/eitan.simler/Roble-Soccer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eitan12345om/Roble-Soccer&amp;utm_campaign=Badge_Grade)
