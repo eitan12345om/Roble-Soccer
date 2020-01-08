@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,13 +33,18 @@ ALLOWED_HOSTS = ['127.0.0.1', 'roble-soccer.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'games.apps.GamesConfig',
+    # Django stuff
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # My apps
+    'games',
+    'frontend',
+    # Other stuff
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

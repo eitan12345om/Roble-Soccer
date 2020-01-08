@@ -2,9 +2,11 @@ import logging
 
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from rest_framework import generics
 
 from games.forms import GameForm, PlayerForm
 from games.models import Game, Player
+from games.serializers import GameSerializer
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level='INFO')
@@ -18,6 +20,11 @@ def index(request):
     }
 
     return render(request, 'games/index.html', context)
+
+
+class GameListCreate(generics.ListCreateAPIView):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
 
 
 def detail(request, game_id):
