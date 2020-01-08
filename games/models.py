@@ -16,12 +16,16 @@ class Game(models.Model):
         return f'Game at {self.location} on {self.datetime}'
 
     def clean(self):
-        present = localtime(now())
-        if self.datetime < present:
-            raise ValidationError('A new game must be set in the future')
+        super().clean()
 
-        if self.max_players < self.min_players:
-            raise ValidationError('Max players is less than min players')
+        if self.datetime:
+            present = localtime(now())
+            if self.datetime < present:
+                raise ValidationError('A new game must be set in the future')
+
+        if self.max_players and self.min_players:
+            if self.max_players < self.min_players:
+                raise ValidationError('Max players is less than min players')
 
 
 class Player(models.Model):

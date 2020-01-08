@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta, timezone
+
 from django.test import TestCase
 
 from games.forms import GameForm
@@ -7,7 +9,7 @@ class GameFormTest(TestCase):
     def test_valid_data(self):
         form = GameForm({
             'location': 'Roble Field',
-            'datetime': '2019-12-03',
+            'datetime': datetime.now(tz=timezone.utc) + timedelta(days=1),
             'max_players': 12,
             'min_players': 10,
         })
