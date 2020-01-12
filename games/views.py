@@ -23,9 +23,9 @@ def index(request):
 def detail(request, game_id):
     game = get_object_or_404(Game, pk=game_id)
 
-    all_players = Player.objects.filter(game_id=game_id)
-    playing = all_players.order_by('id').filter(opted_for_waitlist=False)[:game.max_players]
-    waitlist = all_players.difference(playing).order_by('id')
+    all_players = Player.objects.filter(game_id=game_id).order_by('id')
+    playing = all_players[:game.max_players]
+    waitlist = all_players[game.max_players:]
 
     new_player_form = PlayerForm()
 
@@ -47,8 +47,7 @@ def new_player(request, game_id):
             player = form.save(commit=False)
             player.game_id = game_id
 
-            logger.info(
-                f"Creating new player -- game_id: {player.game_id} -- name: {player.name} -- opted_for_waitlist: {player.opted_for_waitlist}")
+            logger.info(f"Creating new player -- game_id: {player.game_id} -- name: {player.name}")
 
             player.save()
             return redirect(reverse('games:detail', args=(player.game_id,)))
