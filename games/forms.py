@@ -12,4 +12,4 @@ class GameForm(forms.ModelForm):
 class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
-        fields = ('name', 'opted_for_waitlist')
+        fields = ('name',)
