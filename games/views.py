@@ -2,9 +2,12 @@ import logging
 
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.utils.timezone import localtime, now
+from rest_framework import generics
 
 from games.forms import GameForm, PlayerForm
 from games.models import Game, Player
+from games.serializers import GameSerializer
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level='INFO')
@@ -18,6 +21,16 @@ def index(request):
     }
 
     return render(request, 'games/index.html', context)
+
+
+class UpcomingGameListCreate(generics.ListAPIView):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
+
+
+class PastGameListCreate(generics.ListAPIView):
+    queryset = Game.objects.filter(datetime__lt=localtime(now()))
+    serializer_class = GameSerializer
 
 
 def detail(request, game_id):
