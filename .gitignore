@@ -133,3 +133,7 @@ dmypy.json
 
 # App Stuff
 environment.json
+
+# Node stuff
+node_modules
+frontend/static/frontend

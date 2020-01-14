@@ -2,11 +2,6 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 
 class DataProvider extends Component {
-    static propTypes = {
-        endpoint: PropTypes.string.isRequired,
-        render: PropTypes.func.isRequired,
-    };
-
     state = {
         data: [],
         loaded: false,
@@ -33,5 +28,10 @@ class DataProvider extends Component {
         return loaded ? this.props.render(data) : <p>{placeholder}</p>
     }
 }
+
+DataProvider.propTypes = {
+    endpoint: PropTypes.string.isRequired,
+    render: PropTypes.func.isRequired,
+};
 
 export default DataProvider;

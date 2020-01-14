@@ -15,6 +15,9 @@ class Game(models.Model):
     def __str__(self):
         return f'Game at {self.location} on {self.datetime}'
 
+    def is_in_future(self):
+        return self.datetime > localtime(now())
+
     def clean(self):
         super().clean()
 
