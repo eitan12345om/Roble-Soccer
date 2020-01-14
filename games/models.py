@@ -17,7 +17,7 @@ class Game(models.Model):
 
     def is_in_future(self):
         return self.datetime > localtime(now())
-
+ 
     def clean(self):
         super().clean()
 
