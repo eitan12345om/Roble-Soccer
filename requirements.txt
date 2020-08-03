@@ -1,5 +1,5 @@
 djangorestframework
-Django==3.0.8
+Django==3.0.9
 psycopg2
 gunicorn
 dj-config-url
