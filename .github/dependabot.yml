@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  assignees:
+  - eitan12345om
+  ignore:
+  - dependency-name: django
+    versions:
+    - 3.1.5
+    - 3.1.7
